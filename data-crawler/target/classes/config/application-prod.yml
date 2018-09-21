@@ -1,0 +1,117 @@
+spring:
+  profiles: cnprod
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-bp1o07b6bd0bxj068.mysql.rds.aliyuncs.com/mw_merculet_public_chain?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC
+    username: merculet
+    password: mwMercu1et2o25
+    jmx-enabled: true
+    initialSize: 5
+    maxActive: 100
+    minIdle: 5
+    maxIdle: 25
+    maxAge: 3600000
+    timeBetweenEvictionRunsMillis: 10000
+    minEvictableIdleTimeMillis: 10000
+    testWhileIdle: true
+    testOnBorrow: true
+    validationQuery: "SELECT 1"
+    testOnReturn: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    show-sql: false
+    database: mysql
+  kafka:
+    bootstrap-servers: 172.31.9.75:9092,172.31.9.76:9092,172.31.9.77:9092
+    consumer:
+      topic: erc20_transfer_cn
+      balance-change-unequal-topic: token_charge_error_cn
+      group-id: business-consume-cn
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      enable-auto-commit: true
+    producer:
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      topic: erc20_transfer_callback_cn
+      balance-change-topic: token_charge_cn
+  rabbitmq:
+    host: 172.31.9.89
+    port: 5672
+    username: public_chain_user
+    password: fb1c4e0e918d11e8
+    publisher-confirms: true
+    virtual-host: /
+    tosign-virtual-host: vhost_trans_tosign
+    signed-virtual-host: vhost_trans_signed
+    tosign-queue-name: q_tx_tosign
+    signed-queue-name: q_tx_signed
+    raw-virtual-host: vhost_trans_raw
+    raw-queue-name: q_tx_raw
+
+    withdraw-request-virtual-host: vhost_withdraw_request
+    withdraw-request-queue-name: q_withdraw_request
+    withdraw-response-virtual-host: vhost_withdraw_response
+    withdraw-response-queue-name: q_withdraw_response
+    balance-change-virtual-host: vhost_balance_change
+    balance_change-queue-name: q_tx
+  quartz:
+    jdbc:
+      initialize-schema: embedded
+    job-store-type: jdbc
+  redis:
+    host: r-bp1367ef1e9b3e24.redis.rds.aliyuncs.com
+    port: 6379
+    password: YEWLYcnTvyPYNH9VCxnx4Kcv
+    timeout: 30000
+    database: 11
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: 10000
+        max-idle: 25
+        min-idle: 5
+      shutdown-timeout: 10000
+
+
+server:
+  port: 19301
+
+# eth & erc20
+eth:
+  sign-timeout: 60000
+  # 6 hours
+  txn-max-timeout: 21600000
+  # 2 hours
+  txn-min-timeout: 7200000
+
+  block:
+    min-txn-size: 20
+
+web3j:
+  # An infura endpoint https://mainnet.infura.io  https://rinkeby.infura.io/
+  # 新加坡正式以太节点
+  #client-address: http://47.88.236.91:8545
+  # 新加坡测试
+  # client-address: http://47.88.236.91:8546
+  client-address: https://mainnet.infura.io/v3/897979c09c064514a8e8e51a0f888dc3
+  mainnet: true
+  # 是否使用本地签名
+  local-sign: false
+transaction-fee:
+  address: '0x9f4922ee77a40b1ff5baa29376e91ab04e70f240' # 国内正式
+  #address: '0x1f4a50d0cf94d34b4b6a9c3c8d85f9a60ed0fca3' # 国内测试
+  #address: '0xc1bdd6c52fa4f4e3fc5690893ed1423c918161c9' # 国外正式
+  amount: 0.2
+
+gnupg:
+  sign:
+    send-enabled: true
+    receive-enabled: false
+    public-key-path: gnupg/sign/public-key.cnprod.txt
+    private-key-path: gnupg/sign/private-key.cnprod.txt # 随意设置的，无效
+    passphrase: 123456 # 随意设置的，无效
+    signer: eth-signer@merculet.io

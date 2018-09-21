@@ -1,0 +1,33 @@
+spring:
+  profiles: test
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.93.58.59:3306/stock-data?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC
+    username: root
+    password: root
+    jmx-enabled: true
+    initialSize: 5
+    maxActive: 100
+    minIdle: 5
+    maxIdle: 25
+    maxAge: 3600000
+    timeBetweenEvictionRunsMillis: 10000
+    minEvictableIdleTimeMillis: 10000
+    testWhileIdle: true
+    testOnBorrow: true
+    validationQuery: "SELECT 1"
+    testOnReturn: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    show-sql: false
+    database: mysql
+  quartz:
+    jdbc:
+      initialize-schema: embedded
+    job-store-type: jdbc
+
+server:
+  port: 13333
