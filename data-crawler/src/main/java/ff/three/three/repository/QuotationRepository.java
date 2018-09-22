@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author Forest Wang
  * @package ff.three.three.repository
@@ -22,4 +24,10 @@ public interface QuotationRepository extends BaseEntityRepository<Quotation> {
 
 
     Quotation findBySymbolAndDateAndDeletedIsFalse(String symbol, String date);
+
+
+    List<Quotation> findAllBySymbolAndDeletedIsFalseOrderByDate(String symbol);
+
+    List<Quotation> findAllBySymbolAndDateBetweenAndDeletedIsFalseOrderByDate(String symbol, String sd, String ed);
+
 }

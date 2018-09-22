@@ -13,6 +13,16 @@
     </wildcardResourcePatterns>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="data-crawler" />
+      </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="data-crawler" target="1.8" />
+      <module name="stock" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

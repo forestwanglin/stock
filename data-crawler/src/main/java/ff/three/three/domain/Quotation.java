@@ -32,36 +32,72 @@ public class Quotation extends BaseEntity {
 
     private long timestamp;
     private long volume;
-    @Column(name = "`open`", columnDefinition = "varchar(8)")
+    @Column(name = "`open`", columnDefinition = "decimal(19, 8)")
     private BigDecimal open;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal high;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal low;
-    @Column(name = "`close`", columnDefinition = "varchar(8)")
+    @Column(name = "`close`", columnDefinition = "decimal(19, 8)")
     private BigDecimal close;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal chg;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal percent;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal turnoverrate;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal ma5;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal ma10;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal ma20;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal ma30;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal dea;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal dif;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal macd;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal ub;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal lb;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal kdjk;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal kdjd;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal kdjj;
+    /**
+     * RSI是相对强弱指标的缩写
+     * RSI1一般是6日相对强弱指标
+     * RSI2 一般是12日相对强弱指标
+     * RSI3一般是24日相对强弱指标
+     * 相对强弱值rsi＝N日内收盘价上涨幅度总和／上涨下跌幅度总和乘以100
+     */
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal rsi1;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal rsi2;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal rsi3;
+
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal wr6;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal wr10;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal bias1;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal bias2;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal bias3;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal cci;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal psy;
+    @Column(columnDefinition = "decimal(19, 8)")
     private BigDecimal psyma;
 }

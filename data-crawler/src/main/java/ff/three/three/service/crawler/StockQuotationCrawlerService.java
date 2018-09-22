@@ -4,7 +4,10 @@ import cn.magicwindow.common.bean.Constants;
 import cn.magicwindow.common.exception.HttpServiceException;
 import cn.magicwindow.common.exception.MwException;
 import cn.magicwindow.common.service.IService;
-import cn.magicwindow.common.util.*;
+import cn.magicwindow.common.util.AsyncHttpUtils;
+import cn.magicwindow.common.util.DateUtils;
+import cn.magicwindow.common.util.Preconditions;
+import cn.magicwindow.common.util.ThreadUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -12,6 +15,7 @@ import ff.three.three.domain.Quotation;
 import ff.three.three.domain.Stock;
 import ff.three.three.service.entity.QuotationService;
 import ff.three.three.service.entity.StockService;
+import ff.three.three.type.CodeCategory;
 import io.netty.handler.codec.http.DefaultHttpHeaders;
 import io.netty.handler.codec.http.HttpHeaders;
 import org.slf4j.Logger;
@@ -43,7 +47,7 @@ public class StockQuotationCrawlerService implements IService {
     private static final int MAX_TRY_COUNT = 3;
 
 
-    private static final int THREAD_COUNT = 10;
+    private static final int THREAD_COUNT = 8;
 
     @Autowired
     private QuotationService quotationService;
@@ -54,17 +58,25 @@ public class StockQuotationCrawlerService implements IService {
 
     public void crawlStockQuotation() throws MwException {
         List<Stock> stocks = this.stockService.list();
-        int length = stocks.size() / THREAD_COUNT;
-        LOGGER.info(stocks.size() + "");
+        List<Stock> crawlStocks = new ArrayList<>();
+        for (Stock stock : stocks) {
+            if (stock.getCodeCategory() == CodeCategory.HU_A ||
+                    stock.getCodeCategory() == CodeCategory.SHEN_A ||
+                    stock.getCodeCategory() == CodeCategory.CHUANG_YE_BAN ||
+                    stock.getCodeCategory() == CodeCategory.ZHONG_XIAO_BAN) {
+                crawlStocks.add(stock);
+            }
+        }
+        int length = crawlStocks.size() / THREAD_COUNT;
         List<List<Stock>> groups = new ArrayList<>();
         for (int i = 0; i < THREAD_COUNT; i++) {
             int fromIndex = length * i;
             int toIndex = length * (i + 1);
             if (i == THREAD_COUNT - 1) {
-                toIndex = stocks.size();
+                toIndex = crawlStocks.size();
             }
             List<Stock> item = new ArrayList<>();
-            item.addAll(stocks.subList(fromIndex, toIndex));
+            item.addAll(crawlStocks.subList(fromIndex, toIndex));
             groups.add(item);
         }
 
