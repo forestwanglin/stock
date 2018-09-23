@@ -2,30 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdfbe40b-e55d-400d-9274-a233c538c0fe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/domain/FallingStock.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/FallingStockJob.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/FallingStockRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/FallingStockAnalysisService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtStockCrawlerService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/FallingStockService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/utils/ListUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/utils/StockUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/bean/Constants.class" afterPath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/bean/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/config/JobConfig.class" afterPath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/config/JobConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/controller/TestController.class" afterPath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/controller/TestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/repository/QuotationRepository.class" afterPath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/repository/QuotationRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/service/crawler/StockQuotationCrawlerService.class" afterPath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/service/crawler/StockQuotationCrawlerService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/service/entity/QuotationService.class" afterPath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/service/entity/QuotationService.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/domain/HammerStockCandidate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/RtHammerStockJob.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/HammerStockCandidateRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/HammerStockCandidateService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtStockCrawlerService.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtHammerStockCrawlerService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/bean/Constants.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/bean/Constants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/QuotationRepository.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/QuotationRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/StockQuotationCrawlerService.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/StockQuotationCrawlerService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/QuotationService.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/QuotationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/resources/config/application-test.yml" afterPath="$PROJECT_DIR$/data-crawler/src/main/resources/config/application-test.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/target/classes/config/application-test.yml" afterPath="$PROJECT_DIR$/data-crawler/target/classes/config/application-test.yml" />
     </list>
     <ignored path="$PROJECT_DIR$/data-crawler/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -41,7 +25,7 @@
       <file leaf-file-name="HammerLineService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="659">
               <caret line="105" column="84" lean-forward="false" selection-start-line="105" selection-start-column="84" selection-end-line="105" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -50,14 +34,102 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RtStockCrawlerService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtStockCrawlerService.java">
+      <file leaf-file-name="HammerStockCandidate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/domain/HammerStockCandidate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="76" column="45" lean-forward="true" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
+            <state relative-caret-position="420">
+              <caret line="28" column="28" lean-forward="false" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HammerStockCandidateService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/HammerStockCandidateService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="46" column="28" lean-forward="false" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FallingStockRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/FallingStockRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FallingStockService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/FallingStockService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RtHammerStockJob.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/RtHammerStockJob.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="32" column="47" lean-forward="false" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RtHammerStockCrawlerService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtHammerStockCrawlerService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="91" column="57" lean-forward="false" selection-start-line="91" selection-start-column="57" selection-end-line="91" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JobConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FallingStockJob.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/FallingStockJob.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="39" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FallingStock.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/domain/FallingStock.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="27" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,10 +185,15 @@
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/bean/Constants.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/FallingStockAnalysisService.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/FallingStockJob.java" />
-        <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtStockCrawlerService.java" />
+        <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/domain/HammerStockCandidate.java" />
+        <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/RtHammerStockJob.java" />
+        <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java" />
+        <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtHammerStockCrawlerService.java" />
+        <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/HammerStockCandidateRepository.java" />
+        <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/HammerStockCandidateService.java" />
       </list>
     </option>
   </component>
@@ -527,27 +604,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="bean" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stock" type="462c0819:PsiDirectoryNode" />
-              <item name="data-crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stock" type="462c0819:PsiDirectoryNode" />
-              <item name="data-crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="stock" type="b2602c69:ProjectViewProjectNode" />
@@ -578,17 +635,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="three" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stock" type="462c0819:PsiDirectoryNode" />
-              <item name="data-crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="analysis" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="stock" type="b2602c69:ProjectViewProjectNode" />
@@ -774,15 +820,16 @@
       <workItem from="1537496329770" duration="5000" />
       <workItem from="1537496617447" duration="100000" />
       <workItem from="1537524388890" duration="20313000" />
-      <workItem from="1537672420435" duration="15981000" />
+      <workItem from="1537672420435" duration="17208000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36399000" />
+    <option name="totallyTimeSpent" value="37626000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="830" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Key Promoter X" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -797,7 +844,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.54013604" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33061224" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292517" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -806,7 +853,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30476192" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.185034" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.185034" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -948,14 +995,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/domain/FallingStock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data-crawler/src/main/resources/config/application-test.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -993,14 +1032,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/FallingStockRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="65" lean-forward="false" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.0.7.RELEASE/spring-data-commons-2.0.7.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
@@ -1022,16 +1053,6 @@
         <state relative-caret-position="360">
           <caret line="24" column="34" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="34" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/FallingStockJob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="34" column="65" lean-forward="false" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1077,29 +1098,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="57" column="40" lean-forward="true" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/StockCrawlerService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="42" column="17" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="114" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="105" column="84" lean-forward="false" selection-start-line="105" selection-start-column="84" selection-end-line="105" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1113,14 +1116,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/FallingStockService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
@@ -1129,10 +1124,102 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtStockCrawlerService.java">
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/domain/FallingStock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="76" column="45" lean-forward="true" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
+        <state relative-caret-position="270">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="27" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/FallingStockJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="39" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="105" column="84" lean-forward="false" selection-start-line="105" selection-start-column="84" selection-end-line="105" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/RtHammerStockJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="32" column="47" lean-forward="false" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtHammerStockCrawlerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="91" column="57" lean-forward="false" selection-start-line="91" selection-start-column="57" selection-end-line="91" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/FallingStockService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/FallingStockRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/domain/HammerStockCandidate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="28" lean-forward="false" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/HammerStockCandidateRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="88" lean-forward="false" selection-start-line="20" selection-start-column="88" selection-end-line="20" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/HammerStockCandidateService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="46" column="28" lean-forward="false" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

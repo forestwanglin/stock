@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSONObject;
 import ff.three.three.domain.FallingStock;
 import ff.three.three.service.analysis.HammerLineService;
 import ff.three.three.service.entity.FallingStockService;
+import ff.three.three.service.entity.HammerStockCandidateService;
 import io.netty.handler.codec.http.DefaultHttpHeaders;
 import io.netty.handler.codec.http.HttpHeaders;
 import org.slf4j.Logger;
@@ -29,16 +30,16 @@ import static ff.three.three.bean.Constants.COOKIE;
 /**
  * @author Forest Wang
  * @package ff.three.three.service.crawler
- * @class RtStockCrawlerService
+ * @class RtHammerStockCrawlerService
  * @email forest@magicwindow.cn
  * @date 2018/9/23 22:19
  * @description
  */
 @Service
-public class RtStockCrawlerService implements IService {
+public class RtHammerStockCrawlerService implements IService {
 
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RtStockCrawlerService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RtHammerStockCrawlerService.class);
 
     private static final int MAX_TRY_COUNT = 3;
 
@@ -47,6 +48,9 @@ public class RtStockCrawlerService implements IService {
 
     @Autowired
     private HammerLineService hammerLineService;
+
+    @Autowired
+    private HammerStockCandidateService hammerStockCandidateService;
 
     public void crawl() throws MwException {
         String lastDate = DateUtils.format(DateUtils.addDays(DateUtils.now(), -1), DateUtils.FORMAT_D_3);
@@ -80,11 +84,12 @@ public class RtStockCrawlerService implements IService {
                     }
                     double open = prices.get(0);
                     double close = prices.get(prices.size() - 1);
+                    List<String> hammerStockSymbols = new ArrayList<>();
                     if (this.hammerLineService.isHammerDay(open, close, low, high)) {
-                        // TODO
                         LOGGER.info("BUY!!! {}", fallingStock.getSymbol());
+                        hammerStockSymbols.add(fallingStock.getSymbol());
                     }
-
+                    this.hammerStockCandidateService.updateList(hammerStockSymbols);
                 } else {
                     LOGGER.error("network error for stock {}", fallingStock.getSymbol());
                 }

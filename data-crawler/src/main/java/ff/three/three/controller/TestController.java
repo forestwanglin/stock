@@ -3,7 +3,7 @@ package ff.three.three.controller;
 import cn.magicwindow.common.exception.MwException;
 import ff.three.three.service.analysis.FallingStockAnalysisService;
 import ff.three.three.service.analysis.HammerLineService;
-import ff.three.three.service.crawler.RtStockCrawlerService;
+import ff.three.three.service.crawler.RtHammerStockCrawlerService;
 import ff.three.three.service.crawler.StockCrawlerService;
 import ff.three.three.service.crawler.StockQuotationCrawlerService;
 import org.slf4j.Logger;
@@ -100,7 +100,7 @@ public class TestController {
     }
 
     @Autowired
-    private RtStockCrawlerService rtStockCrawlerService;
+    private RtHammerStockCrawlerService rtStockCrawlerService;
 
     @RequestMapping("/rt/{date}")
     public String rt(@PathVariable(name = "date") String date) throws MwException {
