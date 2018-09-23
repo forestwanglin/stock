@@ -4,11 +4,13 @@ import cn.magicwindow.common.exception.MwException;
 import cn.magicwindow.common.service.IService;
 import cn.magicwindow.common.util.DateUtils;
 import cn.magicwindow.common.util.Preconditions;
+import cn.magicwindow.common.util.ThreadUtils;
 import ff.three.three.domain.Quotation;
 import ff.three.three.domain.Stock;
 import ff.three.three.service.entity.QuotationService;
 import ff.three.three.service.entity.StockService;
-import ff.three.three.type.CodeCategory;
+import ff.three.three.utils.ListUtils;
+import ff.three.three.utils.StockUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static cn.magicwindow.common.bean.Constants.EMPTY_STRING;
+import static ff.three.three.bean.Constants.DEFAULT_CHECK_FALLING_DAYS;
 
 /**
  * @author Forest Wang
@@ -30,6 +35,7 @@ public class HammerLineService implements IService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HammerLineService.class);
 
+    private static final int THREAD_COUNT = 4;
 
     @Autowired
     private QuotationService quotationService;
@@ -60,41 +66,66 @@ public class HammerLineService implements IService {
         List<Stock> stocks = this.stockService.list();
         List<Stock> verifyStocks = new ArrayList<>();
         for (Stock stock : stocks) {
-            if (stock.getCodeCategory() == CodeCategory.HU_A ||
-                    stock.getCodeCategory() == CodeCategory.SHEN_A ||
-                    stock.getCodeCategory() == CodeCategory.CHUANG_YE_BAN ||
-                    stock.getCodeCategory() == CodeCategory.ZHONG_XIAO_BAN) {
+            if (StockUtils.need2Deal(stock)) {
                 verifyStocks.add(stock);
             }
         }
+        LOGGER.info("verify stock count: {}", verifyStocks.size());
 
-        for (Stock stock : verifyStocks) {
-            LOGGER.trace("check hammer line for stock: {}", stock.getSymbol());
-            Quotation quotation = this.quotationService.queryBySymbolAndDate(stock.getSymbol(), date);
-            if (this.isFalling(stock.getSymbol(), date) && this.isHammerDay(quotation)) {
-                LOGGER.info("stock: {} date: {}", stock.getSymbol(), date);
-            }
+        List<List<Stock>> groups = ListUtils.split2Group(verifyStocks, THREAD_COUNT);
+
+        for (List<Stock> item : groups) {
+            ThreadUtils.executePoolThread(() -> {
+                for (Stock stock : item) {
+                    LOGGER.trace("check hammer line for stock: {}", stock.getSymbol());
+                    Quotation quotation = this.quotationService.queryBySymbolAndDate(stock.getSymbol(), date);
+                    if (this.isFalling(stock.getSymbol(), date) && this.isHammerDay(quotation)) {
+                        LOGGER.info("stock: {} date: {}", stock.getSymbol(), date);
+                    }
+                }
+            });
+            ThreadUtils.sleep(1000L);
         }
     }
 
     public boolean isHammerDay(Quotation quotation) {
-        double upperShadowHeight = 0;
-        double lowerShadowHeight = 0;
-        double totalHeight = quotation.getHigh().doubleValue() - quotation.getLow().doubleValue();
-        double cylinderHeight = quotation.getClose().doubleValue() - quotation.getOpen().doubleValue();
+        if (Preconditions.isBlank(quotation)
+                || Preconditions.isBlank(quotation.getOpen())
+                || Preconditions.isBlank(quotation.getClose())
+                || Preconditions.isBlank(quotation.getHigh())
+                || Preconditions.isBlank(quotation.getLow())) {
+            LOGGER.warn("stock data exception: {}", Preconditions.isNotBlank(quotation) ? quotation.getSymbol() : EMPTY_STRING);
+            return false;
+        }
+        return isHammerDay(quotation.getOpen().doubleValue(),
+                quotation.getClose().doubleValue(),
+                quotation.getLow().doubleValue(),
+                quotation.getHigh().doubleValue());
+    }
+
+    public boolean isHammerDay(double open, double close, double low, double high) {
+        double upperShadowHeight;
+        double lowerShadowHeight;
+        double totalHeight = high - low;
+        double cylinderHeight = close - open;
         double cylinderHeightAbs = Math.abs(cylinderHeight);
         if (cylinderHeight >= 0) {
-            upperShadowHeight = quotation.getHigh().doubleValue() - quotation.getClose().doubleValue();
-            lowerShadowHeight = quotation.getOpen().doubleValue() - quotation.getLow().doubleValue();
+            upperShadowHeight = high - close;
+            lowerShadowHeight = open - low;
         } else {
-            upperShadowHeight = quotation.getHigh().doubleValue() - quotation.getOpen().doubleValue();
-            lowerShadowHeight = quotation.getClose().doubleValue() - quotation.getLow().doubleValue();
+            upperShadowHeight = high - open;
+            lowerShadowHeight = close - low;
         }
         boolean hammerDay = false;
-        if ((upperShadowHeight < cylinderHeightAbs ||
-                cylinderHeightAbs < totalHeight / 10)
-                && lowerShadowHeight >= cylinderHeightAbs * 2) {
-            hammerDay = true;
+        // 下影线长度是涨跌幅两倍以上
+        if (lowerShadowHeight >= cylinderHeightAbs * 2) {
+            if (upperShadowHeight < cylinderHeightAbs ||
+                    cylinderHeightAbs < totalHeight / 10) {
+                if ((open - low)
+                        / open >= 0.04) {
+                    hammerDay = true;
+                }
+            }
         }
         return hammerDay;
 
@@ -102,12 +133,12 @@ public class HammerLineService implements IService {
 
 
     public boolean isFalling(String symbol, String date) {
-        return isFalling(symbol, date, 5);
+        return isFalling(symbol, date, DEFAULT_CHECK_FALLING_DAYS);
     }
 
     public boolean isFalling(String symbol, String date, int duration) {
         boolean falling = false;
-        List<Quotation> list = this.quotationService.queryLatestDaysBySymbolAndDate(symbol, date, duration);
+        List<Quotation> list = this.quotationService.queryLastNDaysBySymbolAndDate(symbol, date, duration + 1);
         int riseCount = 0;
         int fallCount = 0;
         int unknownCount = 0;

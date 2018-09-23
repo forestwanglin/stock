@@ -2,6 +2,7 @@ package ff.three.three.config;
 
 import ff.three.three.job.CrawlHistoryByDayJob;
 import ff.three.three.job.CrawlStockJob;
+import ff.three.three.job.FallingStockJob;
 import org.quartz.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,7 @@ public class JobConfig {
 
     private static final String CRAWL_STOCK_JOB_ID = "CRAWL_STOCK";
     private static final String CRAWL_STOCK_HISTORY_BY_DAY_JOB_ID = "CRAWL_STOCK_HISTORY_BY_DAY";
+    private static final String FALLING_STOCK_JOB_ID = "FALLING_STOCK";
 
     @Bean
     public JobDetail crawlJobDetail() {
@@ -42,11 +44,26 @@ public class JobConfig {
 
     @Bean
     public Trigger crawlStockHistoryByDayJobTrigger() {
-        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0 0 1 * * ?");
+        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0 30 15 * * ?");
         return TriggerBuilder.newTrigger().forJob(crawlStockHistoryByDayJobDetail())
                 .withIdentity(CRAWL_STOCK_HISTORY_BY_DAY_JOB_ID, CrawlHistoryByDayJob.class.getName())
                 .withSchedule(cronScheduleBuilder).build();
     }
 
+
+    @Bean
+    public JobDetail fallingStockJobDetail() {
+        return JobBuilder.newJob(FallingStockJob.class)
+                .withIdentity(FALLING_STOCK_JOB_ID, FallingStockJob.class.getName())
+                .storeDurably().build();
+    }
+
+    @Bean
+    public Trigger fallingStockJobTrigger() {
+        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0 0 18 * * ?");
+        return TriggerBuilder.newTrigger().forJob(fallingStockJobDetail())
+                .withIdentity(FALLING_STOCK_JOB_ID, FallingStockJob.class.getName())
+                .withSchedule(cronScheduleBuilder).build();
+    }
 
 }

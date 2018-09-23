@@ -16,4 +16,12 @@ public interface Constants {
 
     String PREFIX_SHEN = "SZ";
 
+
+    String HU_INDEX_SYMBOL = "SH000001";
+    String SHEN_INDEX_SYMBOL = "SZ399001";
+    String CYB_INDEX_SYMBOL = "SZ399006";
+
+
+    int DEFAULT_CHECK_FALLING_DAYS = 5;
+
 }

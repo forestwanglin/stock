@@ -1,13 +1,10 @@
 package ff.three.three.service.entity;
 
-import cn.magicwindow.common.util.DateUtils;
-import cn.magicwindow.common.util.Preconditions;
 import ff.three.three.domain.Quotation;
 import ff.three.three.repository.QuotationRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -35,18 +32,12 @@ public class QuotationService extends BaseEntityService<Quotation> {
         return ((QuotationRepository) baseEntityRepository).findAllBySymbolAndDeletedIsFalseOrderByDate(symbol.toUpperCase());
     }
 
-    public List<Quotation> queryLatestDaysBySymbolAndDate(String symbol, String date, int days) {
-        Date endDate = DateUtils.parse(date, DateUtils.FORMAT_D_3);
-        Date startDate = DateUtils.addDays(endDate, -(days + 33));
-        List<Quotation> quotations = ((QuotationRepository) baseEntityRepository).findAllBySymbolAndDateBetweenAndDeletedIsFalseOrderByDate(symbol.toUpperCase(),
-                DateUtils.format(startDate, DateUtils.FORMAT_D_3), date);
-        List<Quotation> result = new ArrayList<>();
-        if (Preconditions.isNotBlank(quotations)) {
-            if (quotations.size() >= days) {
-                result = quotations.subList(quotations.size() - days - 1 >= 0 ? quotations.size() - days - 1 : 0, quotations.size());
-            }
-        }
-        return result;
+
+    public List<Quotation> queryLastNDaysBySymbolAndDate(String symbol, String date, int days) {
+        List<Quotation> quotations = ((QuotationRepository) baseEntityRepository)
+                .queryLastNDaysBySymbolAndDate(symbol.toUpperCase(), date, days);
+        Collections.reverse(quotations);
+        return quotations;
     }
 
 }

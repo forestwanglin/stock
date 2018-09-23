@@ -22,7 +22,7 @@ spring:
       ddl-auto: update
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-    show-sql: false
+    show-sql: true
     database: mysql
   quartz:
     jdbc:

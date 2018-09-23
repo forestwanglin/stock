@@ -15,7 +15,8 @@ import ff.three.three.domain.Quotation;
 import ff.three.three.domain.Stock;
 import ff.three.three.service.entity.QuotationService;
 import ff.three.three.service.entity.StockService;
-import ff.three.three.type.CodeCategory;
+import ff.three.three.utils.ListUtils;
+import ff.three.three.utils.StockUtils;
 import io.netty.handler.codec.http.DefaultHttpHeaders;
 import io.netty.handler.codec.http.HttpHeaders;
 import org.slf4j.Logger;
@@ -60,25 +61,11 @@ public class StockQuotationCrawlerService implements IService {
         List<Stock> stocks = this.stockService.list();
         List<Stock> crawlStocks = new ArrayList<>();
         for (Stock stock : stocks) {
-            if (stock.getCodeCategory() == CodeCategory.HU_A ||
-                    stock.getCodeCategory() == CodeCategory.SHEN_A ||
-                    stock.getCodeCategory() == CodeCategory.CHUANG_YE_BAN ||
-                    stock.getCodeCategory() == CodeCategory.ZHONG_XIAO_BAN) {
+            if (StockUtils.need2Deal(stock)) {
                 crawlStocks.add(stock);
             }
         }
-        int length = crawlStocks.size() / THREAD_COUNT;
-        List<List<Stock>> groups = new ArrayList<>();
-        for (int i = 0; i < THREAD_COUNT; i++) {
-            int fromIndex = length * i;
-            int toIndex = length * (i + 1);
-            if (i == THREAD_COUNT - 1) {
-                toIndex = crawlStocks.size();
-            }
-            List<Stock> item = new ArrayList<>();
-            item.addAll(crawlStocks.subList(fromIndex, toIndex));
-            groups.add(item);
-        }
+        List<List<Stock>> groups = ListUtils.split2Group(crawlStocks, THREAD_COUNT);
 
         for (List<Stock> item : groups) {
             ThreadUtils.executePoolThread(() -> {
