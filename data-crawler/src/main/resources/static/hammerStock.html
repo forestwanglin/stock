@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hammer Candidate List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #999;
+            padding: 4px 8px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>是否锤子线</th>
+            <th>股票代码</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${list}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.confirm}"></td>
+            <td>
+                <a target="_blank" th:href="@{'https://xueqiu.com/S/'+${item.symbol}}" th:text="${item.symbol}"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    window.onload = function () {
+        setTimeout(function () {
+            window.location.href = window.location.href;
+        }, 30000);
+    }
+</script>
+</body>
+</html>

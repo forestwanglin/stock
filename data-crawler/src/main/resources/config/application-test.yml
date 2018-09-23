@@ -28,6 +28,13 @@ spring:
     jdbc:
       initialize-schema: embedded
     job-store-type: jdbc
+  thymeleaf:
+    prefix: classpath:/static/
+    cache: false
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
 
 server:
   port: 13333
