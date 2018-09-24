@@ -31,4 +31,7 @@ public interface QuotationRepository extends BaseEntityRepository<Quotation> {
                                                   @Param("date") String date,
                                                   @Param("days") int days);
 
+
+    @Query(nativeQuery = true, value = "select distinct symbol from quotation where deleted = 0")
+    List<String> queryAllExistSymbol();
 }

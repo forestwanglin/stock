@@ -56,7 +56,6 @@ public class StockQuotationCrawlerService implements IService {
     @Autowired
     private StockService stockService;
 
-
     public void crawlStockQuotation() throws MwException {
         List<Stock> stocks = this.stockService.list();
         List<Stock> crawlStocks = new ArrayList<>();

@@ -40,4 +40,8 @@ public class QuotationService extends BaseEntityService<Quotation> {
         return quotations;
     }
 
+    public List<String> queryAllExistSymbol() {
+        return ((QuotationRepository) baseEntityRepository).queryAllExistSymbol();
+    }
+
 }
