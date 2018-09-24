@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static cn.magicwindow.common.bean.Constants.EMPTY_STRING;
-import static ff.three.three.bean.Constants.DEFAULT_CHECK_FALLING_DAYS;
+import static ff.three.three.bean.Constants.*;
 
 /**
  * @author Forest Wang
@@ -201,6 +201,7 @@ public class HammerLineService implements IService {
             LOGGER.info("| date: {}", date);
             List<HammerStockCandidate> candidates = this.hammerStockCandidateService.queryByDate(date);
             LOGGER.info("|  SYMBOL  |   D1-H   |    D1    |    D2    |    D3    |    D4    |");
+            List<Double> dailyUpDownItems = new ArrayList<>();
             if (Preconditions.isNotBlank(candidates)) {
                 for (HammerStockCandidate candidate : candidates) {
                     List<Quotation> list = this.quotationService.queryNextNDaysBySymbolAndDate(candidate.getSymbol(), date, 5);
@@ -209,10 +210,19 @@ public class HammerLineService implements IService {
                     } else {
                         double close = list.get(0).getClose().doubleValue();
                         double closeD1 = list.get(1).getClose().doubleValue();
-                        double closeD2 = list.get(2).getClose().doubleValue();
-                        double closeD3 = list.get(3).getClose().doubleValue();
-                        double closeD4 = list.get(4).getClose().doubleValue();
                         double highD1 = list.get(1).getHigh().doubleValue();
+                        double closeD2 = 0;
+                        if (list.size() > 2) {
+                            closeD2 = list.get(2).getClose().doubleValue();
+                        }
+                        double closeD3 = 0;
+                        if (list.size() > 3) {
+                            closeD3 = list.get(3).getClose().doubleValue();
+                        }
+                        double closeD4 = 0;
+                        if (list.size() > 4) {
+                            closeD4 = list.get(4).getClose().doubleValue();
+                        }
                         LOGGER.info("| {} | {} | {} | {} | {} | {} |",
                                 candidate.getSymbol(),
                                 NumberFormatUtils.percentFormat((highD1 - close) / close),
@@ -220,14 +230,27 @@ public class HammerLineService implements IService {
                                 NumberFormatUtils.percentFormat((closeD2 - close) / close),
                                 NumberFormatUtils.percentFormat((closeD3 - close) / close),
                                 NumberFormatUtils.percentFormat((closeD4 - close) / close));
-                        if (closeD1 - close >= 0) {
-                            upPercentD1Items.add((closeD1 - close) / close);
+                        double upOrDownPercent = (closeD1 - close) / close;
+                        if (upOrDownPercent >= 0) {
+                            upPercentD1Items.add(upOrDownPercent);
                         } else {
-                            downPercentD1Items.add((closeD1 - close) / close);
+                            downPercentD1Items.add(upOrDownPercent);
                         }
+                        dailyUpDownItems.add(upOrDownPercent);
                         highPercentD1Items.add((highD1 - close) / close);
                     }
                 }
+            }
+            if (Preconditions.isNotBlank(dailyUpDownItems)) {
+                double average = 0;
+                for (double i : dailyUpDownItems) {
+                    average += i;
+                }
+                LOGGER.info("| Day1 up/down: {}", NumberFormatUtils.percentFormat(average / dailyUpDownItems.size()));
+                Quotation quotationSH = this.quotationService.queryNextNDaysBySymbolAndDate(SH_INDEX_SYMBOL, date, 2).get(1);
+                LOGGER.info("| Day1 SH: {}", NumberFormatUtils.percentFormat(quotationSH.getPercent().doubleValue() / 100));
+                Quotation quotationSZ = this.quotationService.queryNextNDaysBySymbolAndDate(SZ_INDEX_SYMBOL, date, 2).get(1);
+                LOGGER.info("| Day1 SZ: {}", NumberFormatUtils.percentFormat(quotationSZ.getPercent().doubleValue() / 100));
             }
         }
 

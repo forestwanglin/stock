@@ -17,8 +17,8 @@ public interface Constants {
     String PREFIX_SHEN = "SZ";
 
 
-    String HU_INDEX_SYMBOL = "SH000001";
-    String SHEN_INDEX_SYMBOL = "SZ399001";
+    String SH_INDEX_SYMBOL = "SH000001";
+    String SZ_INDEX_SYMBOL = "SZ399001";
     String CYB_INDEX_SYMBOL = "SZ399006";
 
 
