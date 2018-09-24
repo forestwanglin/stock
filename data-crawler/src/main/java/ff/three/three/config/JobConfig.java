@@ -77,7 +77,7 @@ public class JobConfig {
 
     @Bean
     public Trigger rtHammerStockJobTrigger() {
-        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0 45/1 14 * * ?");
+        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0 45/1 14,15 * * ?");
         return TriggerBuilder.newTrigger().forJob(rtHammerStockJobDetail())
                 .withIdentity(RT_HAMMER_STOCK_JOB_ID, RtHammerStockJob.class.getName())
                 .withSchedule(cronScheduleBuilder).build();

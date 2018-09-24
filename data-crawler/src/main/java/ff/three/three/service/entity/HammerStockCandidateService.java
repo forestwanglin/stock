@@ -36,15 +36,19 @@ public class HammerStockCandidateService extends BaseEntityService<HammerStockCa
             }
         }
         for (String symbol : stockSymbols) {
-            HammerStockCandidate item = ((HammerStockCandidateRepository) baseEntityRepository).findBySymbolAndDateAndDeletedIsFalse(
-                    symbol.toLowerCase(), date);
-            if (Preconditions.isBlank(item)) {
-                item = new HammerStockCandidate();
-                item.setSymbol(symbol.toUpperCase());
-                item.setDate(date);
-            }
-            item.setConfirm(true);
-            this.save(item);
+            this.updateItem(symbol.toUpperCase(), date);
         }
+    }
+
+    public void updateItem(String symbol, String date) throws MwException {
+        HammerStockCandidate item = ((HammerStockCandidateRepository) baseEntityRepository).findBySymbolAndDateAndDeletedIsFalse(
+                symbol.toUpperCase(), date);
+        if (Preconditions.isBlank(item)) {
+            item = new HammerStockCandidate();
+            item.setSymbol(symbol.toUpperCase());
+            item.setDate(date);
+        }
+        item.setConfirm(true);
+        this.save(item);
     }
 }

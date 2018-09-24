@@ -7,6 +7,7 @@ import cn.magicwindow.common.util.Preconditions;
 import cn.magicwindow.common.util.ThreadUtils;
 import ff.three.three.domain.Quotation;
 import ff.three.three.domain.Stock;
+import ff.three.three.service.entity.HammerStockCandidateService;
 import ff.three.three.service.entity.QuotationService;
 import ff.three.three.service.entity.StockService;
 import ff.three.three.utils.ListUtils;
@@ -35,13 +36,16 @@ public class HammerLineService implements IService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HammerLineService.class);
 
-    private static final int THREAD_COUNT = 4;
+    private static final int THREAD_COUNT = 8;
 
     @Autowired
     private QuotationService quotationService;
 
     @Autowired
     private StockService stockService;
+
+    @Autowired
+    private HammerStockCandidateService hammerStockCandidateService;
 
 
     public void xx() {
@@ -62,6 +66,12 @@ public class HammerLineService implements IService {
         this.findAll(DateUtils.format(DateUtils.now(), DateUtils.FORMAT_D_3));
     }
 
+    /**
+     * 查找某一天是否是锤子股
+     *
+     * @param date
+     * @throws MwException
+     */
     public void findAll(String date) throws MwException {
         List<Stock> stocks = this.stockService.list();
         List<Stock> verifyStocks = new ArrayList<>();
@@ -81,8 +91,14 @@ public class HammerLineService implements IService {
                     Quotation quotation = this.quotationService.queryBySymbolAndDate(stock.getSymbol(), date);
                     if (this.isFalling(stock.getSymbol(), date) && this.isHammerDay(quotation)) {
                         LOGGER.info("stock: {} date: {}", stock.getSymbol(), date);
+                        try {
+                            this.hammerStockCandidateService.updateItem(stock.getSymbol(), date);
+                        } catch (MwException e) {
+                            LOGGER.error("error occurred", e);
+                        }
                     }
                 }
+                LOGGER.info("HammerLine thread finished for {}", date);
             });
             ThreadUtils.sleep(1000L);
         }
@@ -167,4 +183,5 @@ public class HammerLineService implements IService {
         }
         return falling;
     }
+
 }
