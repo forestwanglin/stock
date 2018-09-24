@@ -70,13 +70,14 @@ public class StockQuotationCrawlerService implements IService {
         for (List<Stock> item : groups) {
             ThreadUtils.executePoolThread(() -> {
                 for (Stock stock : item) {
-                    LOGGER.info("crawl stock: {}", stock.getSymbol());
                     try {
-                        crawlStockQuotation(stock.getSymbol());
+                        LOGGER.info("crawl stock: {}", stock.getSymbol());
+                        this.crawlStockQuotation(stock.getSymbol());
                     } catch (MwException e) {
                         LOGGER.error("thread error", e);
                     }
                 }
+                LOGGER.info("thread finished");
             });
             ThreadUtils.sleep(1000L);
         }
@@ -125,7 +126,6 @@ public class StockQuotationCrawlerService implements IService {
                     quotation.setMacd(item.getBigDecimal(getIndex(columns, "macd")));
                     quotation.setUb(item.getBigDecimal(getIndex(columns, "ub")));
                     quotation.setLb(item.getBigDecimal(getIndex(columns, "lb")));
-//                    quotation.setMa20(item.getBigDecimal(getIndex(columns, "ma20")));
                     quotation.setKdjk(item.getBigDecimal(getIndex(columns, "kdjk")));
                     quotation.setKdjd(item.getBigDecimal(getIndex(columns, "kdjd")));
                     quotation.setKdjj(item.getBigDecimal(getIndex(columns, "kdjj")));
