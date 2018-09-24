@@ -5,11 +5,10 @@ import cn.magicwindow.common.exception.MwException;
 import cn.magicwindow.common.util.DateUtils;
 import ff.three.three.service.analysis.HammerLineService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Forest Wang
@@ -36,5 +35,12 @@ public class HammerLineController implements IController {
         }
         return "success";
     }
+
+    @RequestMapping(value = "/analyzeFollowingDays", method = RequestMethod.POST)
+    public String analyzeFollowingDays(@RequestBody List<String> dates) throws MwException {
+        this.hammerLineService.analyzeFollowingDays(dates);
+        return "success";
+    }
+
 
 }

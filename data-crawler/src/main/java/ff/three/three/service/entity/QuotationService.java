@@ -28,6 +28,10 @@ public class QuotationService extends BaseEntityService<Quotation> {
         return ((QuotationRepository) baseEntityRepository).findBySymbolAndDateAndDeletedIsFalse(symbol.toUpperCase(), date);
     }
 
+    public List<Quotation> queryNextNDaysBySymbolAndDate(String symbol, String date, int days) {
+        return ((QuotationRepository) baseEntityRepository).queryNextNDaysBySymbolAndDate(symbol.toUpperCase(), date, days);
+    }
+
     public List<Quotation> queryBySymbol(String symbol) {
         return ((QuotationRepository) baseEntityRepository).findAllBySymbolAndDeletedIsFalseOrderByDate(symbol.toUpperCase());
     }

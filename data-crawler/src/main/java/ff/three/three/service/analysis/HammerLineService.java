@@ -5,12 +5,14 @@ import cn.magicwindow.common.service.IService;
 import cn.magicwindow.common.util.DateUtils;
 import cn.magicwindow.common.util.Preconditions;
 import cn.magicwindow.common.util.ThreadUtils;
+import ff.three.three.domain.HammerStockCandidate;
 import ff.three.three.domain.Quotation;
 import ff.three.three.domain.Stock;
 import ff.three.three.service.entity.HammerStockCandidateService;
 import ff.three.three.service.entity.QuotationService;
 import ff.three.three.service.entity.StockService;
 import ff.three.three.utils.ListUtils;
+import ff.three.three.utils.NumberFormatUtils;
 import ff.three.three.utils.StockUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -135,11 +137,13 @@ public class HammerLineService implements IService {
         boolean hammerDay = false;
         // 下影线长度是涨跌幅两倍以上
         if (lowerShadowHeight >= cylinderHeightAbs * 2) {
-            if (upperShadowHeight < cylinderHeightAbs ||
-                    cylinderHeightAbs < totalHeight / 10) {
-                if ((open - low)
-                        / open >= 0.04) {
-                    hammerDay = true;
+            if (lowerShadowHeight >= upperShadowHeight * 2) {
+                if (upperShadowHeight < cylinderHeightAbs ||
+                        cylinderHeightAbs < totalHeight / 10) {
+                    if ((open - low)
+                            / open >= 0.04) {
+                        hammerDay = true;
+                    }
                 }
             }
         }
@@ -182,6 +186,59 @@ public class HammerLineService implements IService {
             }
         }
         return falling;
+    }
+
+
+    /**
+     * 分析
+     **/
+    public void analyzeFollowingDays(List<String> dates) {
+        List<Double> upPercentD1Items = new ArrayList<>();
+        List<Double> downPercentD1Items = new ArrayList<>();
+        List<Double> highPercentD1Items = new ArrayList<>();
+        for (String date : dates) {
+            LOGGER.info("------------------------------------------------------------------");
+            LOGGER.info("| date: {}", date);
+            List<HammerStockCandidate> candidates = this.hammerStockCandidateService.queryByDate(date);
+            LOGGER.info("|  SYMBOL  |   D1-H   |    D1    |    D2    |    D3    |    D4    |");
+            if (Preconditions.isNotBlank(candidates)) {
+                for (HammerStockCandidate candidate : candidates) {
+                    List<Quotation> list = this.quotationService.queryNextNDaysBySymbolAndDate(candidate.getSymbol(), date, 5);
+                    if (Preconditions.isBlank(list) || list.size() == 1) {
+                        LOGGER.info("stock {} date {} is the last txn day", candidate.getSymbol(), date);
+                    } else {
+                        double close = list.get(0).getClose().doubleValue();
+                        double closeD1 = list.get(1).getClose().doubleValue();
+                        double closeD2 = list.get(2).getClose().doubleValue();
+                        double closeD3 = list.get(3).getClose().doubleValue();
+                        double closeD4 = list.get(4).getClose().doubleValue();
+                        double highD1 = list.get(1).getHigh().doubleValue();
+                        LOGGER.info("| {} | {} | {} | {} | {} | {} |",
+                                candidate.getSymbol(),
+                                NumberFormatUtils.percentFormat((highD1 - close) / close),
+                                NumberFormatUtils.percentFormat((closeD1 - close) / close),
+                                NumberFormatUtils.percentFormat((closeD2 - close) / close),
+                                NumberFormatUtils.percentFormat((closeD3 - close) / close),
+                                NumberFormatUtils.percentFormat((closeD4 - close) / close));
+                        if (closeD1 - close >= 0) {
+                            upPercentD1Items.add((closeD1 - close) / close);
+                        } else {
+                            downPercentD1Items.add((closeD1 - close) / close);
+                        }
+                        highPercentD1Items.add((highD1 - close) / close);
+                    }
+                }
+            }
+        }
+
+        LOGGER.info("| Day1: Go up: {}({}), Go down: {}({})", upPercentD1Items.size(), NumberFormatUtils.percentFormat(upPercentD1Items.size() / (double) (upPercentD1Items.size() + downPercentD1Items.size())),
+                downPercentD1Items.size(), NumberFormatUtils.percentFormat(downPercentD1Items.size() / (double) (upPercentD1Items.size() + downPercentD1Items.size())));
+        double average = 0;
+        for (double i : highPercentD1Items) {
+            average += i;
+        }
+        average = average / highPercentD1Items.size();
+        LOGGER.info("| Day1 high average: {}", NumberFormatUtils.percentFormat(average));
     }
 
 }

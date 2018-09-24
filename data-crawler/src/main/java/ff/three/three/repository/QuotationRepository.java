@@ -26,6 +26,14 @@ public interface QuotationRepository extends BaseEntityRepository<Quotation> {
 
     List<Quotation> findAllBySymbolAndDeletedIsFalseOrderByDate(String symbol);
 
+    /**
+     * 包括当天
+     *
+     * @param symbol
+     * @param date
+     * @param days
+     * @return
+     */
     @Query(nativeQuery = true, value = "select * from quotation where symbol = :symbol and date <= :date and deleted = 0 order by date desc limit :days")
     List<Quotation> queryLastNDaysBySymbolAndDate(@Param("symbol") String symbol,
                                                   @Param("date") String date,
@@ -34,4 +42,13 @@ public interface QuotationRepository extends BaseEntityRepository<Quotation> {
 
     @Query(nativeQuery = true, value = "select distinct symbol from quotation where deleted = 0")
     List<String> queryAllExistSymbol();
+
+
+    /**
+     * 包括当前天
+     */
+    @Query(nativeQuery = true, value = "select * from quotation where symbol = :symbol and date >= :date and deleted = 0 order by date limit :days")
+    List<Quotation> queryNextNDaysBySymbolAndDate(@Param("symbol") String symbol,
+                                                  @Param("date") String date,
+                                                  @Param("days") int days);
 }
