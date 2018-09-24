@@ -24,3 +24,4 @@ ff/three/three/service/entity/BaseEntityService.class
 ff/three/three/Application.class
 ff/three/three/config/PrimaryConfig.class
 ff/three/three/config/SwaggerConfig.class
+ff/three/three/controller/HammerLineController.class
