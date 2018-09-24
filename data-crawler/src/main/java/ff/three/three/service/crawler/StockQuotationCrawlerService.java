@@ -15,6 +15,7 @@ import ff.three.three.domain.Quotation;
 import ff.three.three.domain.Stock;
 import ff.three.three.service.entity.QuotationService;
 import ff.three.three.service.entity.StockService;
+import ff.three.three.service.entity.TxnDayService;
 import ff.three.three.utils.ListUtils;
 import ff.three.three.utils.StockUtils;
 import io.netty.handler.codec.http.DefaultHttpHeaders;
@@ -55,6 +56,9 @@ public class StockQuotationCrawlerService implements IService {
 
     @Autowired
     private StockService stockService;
+
+    @Autowired
+    private TxnDayService txnDayService;
 
     public void crawlStockQuotation() throws MwException {
         List<Stock> stocks = this.stockService.list();

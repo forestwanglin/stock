@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static ff.three.three.bean.Constants.SH_INDEX_SYMBOL;
+
 /**
  * @author Forest Wang
  * @package ff.three.three.repository
@@ -26,29 +28,38 @@ public interface QuotationRepository extends BaseEntityRepository<Quotation> {
 
     List<Quotation> findAllBySymbolAndDeletedIsFalseOrderByDate(String symbol);
 
-    /**
-     * 包括当天
-     *
-     * @param symbol
-     * @param date
-     * @param days
-     * @return
-     */
-    @Query(nativeQuery = true, value = "select * from quotation where symbol = :symbol and date <= :date and deleted = 0 order by date desc limit :days")
-    List<Quotation> queryLastNDaysBySymbolAndDate(@Param("symbol") String symbol,
-                                                  @Param("date") String date,
-                                                  @Param("days") int days);
-
 
     @Query(nativeQuery = true, value = "select distinct symbol from quotation where deleted = 0")
     List<String> queryAllExistSymbol();
 
+    @Query(nativeQuery = true, value = "select DISTINCT date from quotation where symbol='" + SH_INDEX_SYMBOL + "' and deleted = 0 order by date desc limit :days")
+    List<String> queryLastNTxnDay(@Param("days") int days);
 
-    /**
-     * 包括当前天
-     */
-    @Query(nativeQuery = true, value = "select * from quotation where symbol = :symbol and date >= :date and deleted = 0 order by date limit :days")
-    List<Quotation> queryNextNDaysBySymbolAndDate(@Param("symbol") String symbol,
-                                                  @Param("date") String date,
-                                                  @Param("days") int days);
+    @Query(nativeQuery = true, value = "select DISTINCT date from quotation where symbol='" + SH_INDEX_SYMBOL + "' and deleted = 0 ")
+    List<String> queryAllTxnDay();
+
+
+//    /**
+//     * 包括当天
+//     *
+//     * @param symbol
+//     * @param date
+//     * @param days
+//     * @return
+//     */
+//    @Query(nativeQuery = true, value = "select * from quotation where symbol = :symbol and date <= :date and deleted = 0 order by date desc limit :days")
+//    List<Quotation> queryLastNDaysBySymbolAndDate(@Param("symbol") String symbol,
+//                                                  @Param("date") String date,
+//                                                  @Param("days") int days);
+//
+//
+//    /**
+//     * 包括当前天
+//     */
+//    @Query(nativeQuery = true, value = "select * from quotation where symbol = :symbol and date >= :date and deleted = 0 order by date limit :days")
+//    List<Quotation> queryNextNDaysBySymbolAndDate(@Param("symbol") String symbol,
+//                                                  @Param("date") String date,
+//                                                  @Param("days") int days);
+
+
 }

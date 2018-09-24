@@ -1,9 +1,6 @@
 package ff.three.three.config;
 
-import ff.three.three.job.CrawlHistoryByDayJob;
-import ff.three.three.job.CrawlStockJob;
-import ff.three.three.job.FallingStockJob;
-import ff.three.three.job.RtHammerStockJob;
+import ff.three.three.job.*;
 import org.quartz.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +20,7 @@ public class JobConfig {
     private static final String CRAWL_STOCK_HISTORY_BY_DAY_JOB_ID = "CRAWL_STOCK_HISTORY_BY_DAY";
     private static final String FALLING_STOCK_JOB_ID = "FALLING_STOCK";
     private static final String RT_HAMMER_STOCK_JOB_ID = "RT_HAMMER_STOCK";
+    private static final String TXN_DAY_UPDATE_JOB_ID = "TXN_DAY_UPDATE";
 
     @Bean
     public JobDetail crawlJobDetail() {
@@ -49,6 +47,22 @@ public class JobConfig {
         CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0 30 15 * * ?");
         return TriggerBuilder.newTrigger().forJob(crawlStockHistoryByDayJobDetail())
                 .withIdentity(CRAWL_STOCK_HISTORY_BY_DAY_JOB_ID, CrawlHistoryByDayJob.class.getName())
+                .withSchedule(cronScheduleBuilder).build();
+    }
+
+
+    @Bean
+    public JobDetail txnDayUpdateJobDetail() {
+        return JobBuilder.newJob(TxnDayUpdateJob.class)
+                .withIdentity(TXN_DAY_UPDATE_JOB_ID, TxnDayUpdateJob.class.getName())
+                .storeDurably().build();
+    }
+
+    @Bean
+    public Trigger txnDayUpdateJobTrigger() {
+        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0 0 16 * * ?");
+        return TriggerBuilder.newTrigger().forJob(txnDayUpdateJobDetail())
+                .withIdentity(TXN_DAY_UPDATE_JOB_ID, TxnDayUpdateJob.class.getName())
                 .withSchedule(cronScheduleBuilder).build();
     }
 
