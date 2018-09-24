@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdfbe40b-e55d-400d-9274-a233c538c0fe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/utils/NumberFormatUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/repository/QuotationRepository.class" afterPath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/repository/QuotationRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/service/entity/QuotationService.class" afterPath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/service/entity/QuotationService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/HammerLineController.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/HammerLineController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/QuotationRepository.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/QuotationRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/QuotationService.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/QuotationService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/resources/static/hammerStock.html" afterPath="$PROJECT_DIR$/data-crawler/src/main/resources/static/hammerStock.html" />
     </list>
     <ignored path="$PROJECT_DIR$/data-crawler/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,8 +19,8 @@
       <file leaf-file-name="HammerLineController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/HammerLineController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="45" lean-forward="true" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+            <state relative-caret-position="690">
+              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -34,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HammerLineService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HammerLineService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="199" column="88" lean-forward="true" selection-start-line="199" selection-start-column="88" selection-end-line="199" selection-end-column="88" />
+            <state relative-caret-position="649">
+              <caret line="213" column="78" lean-forward="true" selection-start-line="213" selection-start-column="78" selection-end-line="213" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -49,6 +43,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
               <caret line="31" column="69" lean-forward="true" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hammerStock.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/resources/static/hammerStock.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="48" lean-forward="false" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -144,7 +148,6 @@
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/repository/HammerStockCandidateRepository.java" />
         <option value="$PROJECT_DIR$/data-crawler/pom.xml" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/resources/config/application-prod.yml" />
-        <option value="$PROJECT_DIR$/data-crawler/src/main/resources/static/hammerStock.html" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/resources/config/application-test.yml" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/StockQuotationCrawlerService.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java" />
@@ -156,6 +159,7 @@
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/HammerLineController.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/utils/NumberFormatUtils.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java" />
+        <option value="$PROJECT_DIR$/data-crawler/src/main/resources/static/hammerStock.html" />
       </list>
     </option>
   </component>
@@ -658,6 +662,15 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="stock" type="b2602c69:ProjectViewProjectNode" />
+              <item name="stock" type="462c0819:PsiDirectoryNode" />
+              <item name="data-crawler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -819,15 +832,16 @@
       <workItem from="1537496617447" duration="100000" />
       <workItem from="1537524388890" duration="20313000" />
       <workItem from="1537672420435" duration="20463000" />
-      <workItem from="1537752740762" duration="12294000" />
+      <workItem from="1537752740762" duration="13838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53175000" />
+    <option name="totallyTimeSpent" value="54719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="113" y="23" width="2402" height="1346" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Key Promoter X" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -849,10 +863,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.8633093" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2166267" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29416466" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16822034" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20042373" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1140,14 +1154,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/resources/static/hammerStock.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/type/CodeCategory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="891">
@@ -1177,7 +1183,7 @@
         <state relative-caret-position="450">
           <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1203,7 +1209,7 @@
         <state relative-caret-position="615">
           <caret line="91" column="60" lean-forward="true" selection-start-line="91" selection-start-column="60" selection-end-line="91" selection-end-column="60" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1213,7 +1219,7 @@
         <state relative-caret-position="723">
           <caret line="56" column="9" lean-forward="true" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1290,16 +1296,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/HammerLineController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="45" lean-forward="true" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/QuotationService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -1310,8 +1306,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="199" column="88" lean-forward="true" selection-start-line="199" selection-start-column="88" selection-end-line="199" selection-end-column="88" />
+        <state relative-caret-position="649">
+          <caret line="213" column="78" lean-forward="true" selection-start-line="213" selection-start-column="78" selection-end-line="213" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/HammerLineController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/resources/static/hammerStock.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="48" lean-forward="false" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
           <folding />
         </state>
       </provider>

@@ -16,6 +16,8 @@
 </head>
 <body>
 <div>
+    <div>上次页面刷新时间：<span style="font-weight: bold;" id="lastRefreshTime"></span></div>
+    <br>
     <table>
         <thead>
         <tr>
@@ -37,6 +39,7 @@
 </div>
 <script>
     window.onload = function () {
+        document.getElementById("lastRefreshTime").innerHTML = new Date();
         setTimeout(function () {
             window.location.href = window.location.href;
         }, 30000);
