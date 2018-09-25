@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdfbe40b-e55d-400d-9274-a233c538c0fe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/TxnDayCrawlerService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/controller/TestController.class" afterPath="$PROJECT_DIR$/data-crawler/target/classes/ff/three/three/controller/TestController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/TxnDayUpdateJob.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/TxnDayUpdateJob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/TxnDayService.java" afterPath="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/TxnDayService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-crawler/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/data-crawler/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
     <ignored path="$PROJECT_DIR$/data-crawler/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,69 +16,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="JobConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="60" column="9" lean-forward="true" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TxnDayUpdateJob.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/TxnDayUpdateJob.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="32" column="46" lean-forward="false" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TxnDayCrawlerService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/TxnDayCrawlerService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="50" column="17" lean-forward="false" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1948#1949#0" expanded="true" />
-                <element signature="e#1981#1982#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TxnDayService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/TxnDayService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="28" column="28" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StockCrawlerService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/StockCrawlerService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-350">
-              <caret line="34" column="3" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RtHammerStockCrawlerService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtHammerStockCrawlerService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="94" column="17" lean-forward="true" selection-start-line="64" selection-start-column="15" selection-end-line="94" selection-end-column="17" />
+            <state relative-caret-position="172">
+              <caret line="99" column="21" lean-forward="false" selection-start-line="99" selection-start-column="11" selection-end-line="99" selection-end-column="21" />
+              <folding>
+                <element signature="e#3940#3941#0" expanded="true" />
+                <element signature="e#3987#3988#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="125" column="27" lean-forward="false" selection-start-line="125" selection-start-column="22" selection-end-line="125" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -153,9 +103,9 @@
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/QuotationService.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/job/TxnDayUpdateJob.java" />
-        <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/entity/TxnDayService.java" />
         <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/TxnDayCrawlerService.java" />
+        <option value="$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java" />
       </list>
     </option>
   </component>
@@ -566,47 +516,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="bean" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stock" type="462c0819:PsiDirectoryNode" />
-              <item name="data-crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stock" type="462c0819:PsiDirectoryNode" />
-              <item name="data-crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stock" type="462c0819:PsiDirectoryNode" />
-              <item name="data-crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="job" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stock" type="462c0819:PsiDirectoryNode" />
-              <item name="data-crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="stock" type="b2602c69:ProjectViewProjectNode" />
@@ -639,17 +549,6 @@
               <item name="three" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="crawler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stock" type="462c0819:PsiDirectoryNode" />
-              <item name="data-crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="stock" type="b2602c69:ProjectViewProjectNode" />
@@ -848,12 +747,12 @@
       <workItem from="1537524388890" duration="20313000" />
       <workItem from="1537672420435" duration="20463000" />
       <workItem from="1537752740762" duration="24044000" />
-      <workItem from="1537840444609" duration="1093000" />
+      <workItem from="1537840444609" duration="1491000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66018000" />
+    <option name="totallyTimeSpent" value="66416000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="830" extended-state="6" />
@@ -872,7 +771,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23537415" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23537415" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33469388" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -882,10 +781,10 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5059952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933652" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23265307" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3505007" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2761087" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -904,7 +803,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="57" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java</url>
+          <line>128</line>
+          <properties />
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="58" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1104,13 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/sql/quartz.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/analysis/FallingStockAnalysisService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="723">
@@ -1294,22 +1194,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtHammerStockCrawlerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="94" column="17" lean-forward="true" selection-start-line="64" selection-start-column="15" selection-end-line="94" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="109" column="5" lean-forward="false" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/config/JobConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -1340,13 +1224,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/TxnDayCrawlerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="50" column="17" lean-forward="false" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
+        <state relative-caret-position="443">
+          <caret line="43" column="40" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1948#1949#0" expanded="true" />
             <element signature="e#1981#1982#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/sql/quartz.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/service/crawler/RtHammerStockCrawlerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="99" column="21" lean-forward="false" selection-start-line="99" selection-start-column="11" selection-end-line="99" selection-end-column="21" />
+          <folding>
+            <element signature="e#3940#3941#0" expanded="true" />
+            <element signature="e#3987#3988#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-crawler/src/main/java/ff/three/three/controller/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="125" column="27" lean-forward="false" selection-start-line="125" selection-start-column="22" selection-end-line="125" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
