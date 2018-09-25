@@ -6,7 +6,7 @@ import ff.three.three.service.analysis.HammerLineService;
 import ff.three.three.service.crawler.RtHammerStockCrawlerService;
 import ff.three.three.service.crawler.StockCrawlerService;
 import ff.three.three.service.crawler.StockQuotationCrawlerService;
-import ff.three.three.service.entity.TxnDayService;
+import ff.three.three.service.crawler.TxnDayCrawlerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,12 +110,11 @@ public class TestController {
     }
 
     @Autowired
-    private TxnDayService txnDayService;
+    private TxnDayCrawlerService txnDayCrawlerService;
 
-
-    @RequestMapping("/tds")
-    public String tds() throws MwException {
-        txnDayService.txnDatesUpdate();
+    @RequestMapping("/tdc")
+    public String tdc() throws MwException {
+        txnDayCrawlerService.crawl();
         return "tt";
     }
 

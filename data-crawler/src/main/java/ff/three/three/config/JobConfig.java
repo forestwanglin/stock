@@ -60,7 +60,7 @@ public class JobConfig {
 
     @Bean
     public Trigger txnDayUpdateJobTrigger() {
-        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0 0 16 * * ?");
+        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0 0 10 * * ?");
         return TriggerBuilder.newTrigger().forJob(txnDayUpdateJobDetail())
                 .withIdentity(TXN_DAY_UPDATE_JOB_ID, TxnDayUpdateJob.class.getName())
                 .withSchedule(cronScheduleBuilder).build();

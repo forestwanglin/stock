@@ -4,7 +4,6 @@ import cn.magicwindow.common.exception.MwException;
 import cn.magicwindow.common.util.Preconditions;
 import ff.three.three.domain.TxnDay;
 import ff.three.three.repository.TxnDayRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,23 +21,17 @@ import java.util.List;
 @Service
 public class TxnDayService extends BaseEntityService<TxnDay> {
 
-    @Autowired
-    private QuotationService quotationService;
-
 
     public TxnDay queryByDate(String date) {
         return ((TxnDayRepository) baseEntityRepository).findByDateAndDeletedIsFalse(date);
     }
 
-    public void txnDatesUpdate() throws MwException {
-        List<String> dates = this.quotationService.queryLastNTxnDay(33);
-        for (String date : dates) {
-            TxnDay txnDay = this.queryByDate(date);
-            if (Preconditions.isBlank(txnDay)) {
-                txnDay = new TxnDay();
-                txnDay.setDate(date);
-                this.save(txnDay);
-            }
+    public void txnDayUpdate(String date) throws MwException {
+        TxnDay txnDay = this.queryByDate(date);
+        if (Preconditions.isBlank(txnDay)) {
+            txnDay = new TxnDay();
+            txnDay.setDate(date);
+            this.save(txnDay);
         }
     }
 

@@ -1,7 +1,7 @@
 package ff.three.three.job;
 
 import cn.magicwindow.common.exception.MwException;
-import ff.three.three.service.entity.TxnDayService;
+import ff.three.three.service.crawler.TxnDayCrawlerService;
 import lombok.Data;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -24,13 +24,13 @@ public class TxnDayUpdateJob extends QuartzJobBean {
     private static final Logger LOGGER = LoggerFactory.getLogger(TxnDayUpdateJob.class);
 
     @Autowired
-    private TxnDayService txnDayService;
+    private TxnDayCrawlerService txnDayCrawlerService;
 
     @Override
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
         LOGGER.info("txn day update job run");
         try {
-            this.txnDayService.txnDatesUpdate();
+            this.txnDayCrawlerService.crawl();
         } catch (MwException e) {
             LOGGER.error("error", e);
         }

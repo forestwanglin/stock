@@ -21,6 +21,7 @@
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/config/PrimaryConfig.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/analysis/HammerLineService.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/job/CrawlHistoryByDayJob.java
+/workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/entity/TxnDayService.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/Application.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/bean/pageable/SortField.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/config/SwaggerConfig.java
@@ -28,6 +29,7 @@
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/entity/QuotationService.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/job/CrawlStockJob.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/utils/NumberFormatUtils.java
+/workspace/codes/stock/data-crawler/src/main/java/ff/three/three/job/TxnDayUpdateJob.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/controller/HammerLineController.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/bean/pageable/PageableResponse.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/entity/StockService.java
@@ -35,7 +37,9 @@
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/domain/BaseEntity.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/config/JobConfig.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/utils/ListUtils.java
+/workspace/codes/stock/data-crawler/src/main/java/ff/three/three/domain/TxnDay.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/domain/Quotation.java
+/workspace/codes/stock/data-crawler/src/main/java/ff/three/three/repository/TxnDayRepository.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/crawler/StockCrawlerService.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/bean/pageable/SortDirection.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/crawler/RtHammerStockCrawlerService.java
