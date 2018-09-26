@@ -172,7 +172,14 @@ public class StockQuotationCrawlerService implements IService {
         queryParams.put("indicator", "kline,ma,macd,kdj,boll,rsi,wr,bias,cci,psy");
 
         HttpHeaders httpHeaders = new DefaultHttpHeaders();
-        httpHeaders.add("Cookie", COOKIE);
+        String cookie = COOKIE;
+        String now = String.valueOf(DateUtils.now().getTime());
+        String pre2days = String.valueOf(DateUtils.addDays(DateUtils.now(), -2).getTime());
+        String next2days = String.valueOf(DateUtils.addDays(DateUtils.now(), 2).getTime());
+        cookie = cookie.replaceAll("\\{NOW}", now.substring(0, now.length() - 3));
+        cookie = cookie.replaceAll("\\{PRE2DAYS}", pre2days.substring(0, pre2days.length() - 3));
+        cookie = cookie.replaceAll("\\{NEXT2DAYS}", next2days.substring(0, next2days.length() - 3));
+        httpHeaders.add("Cookie", cookie);
 
         try {
             String data = AsyncHttpUtils.syncGet("https://stock.xueqiu.com/v5/stock/chart/kline.json", queryParams, httpHeaders);

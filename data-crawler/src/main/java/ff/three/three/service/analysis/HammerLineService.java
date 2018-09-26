@@ -19,8 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static cn.magicwindow.common.bean.Constants.EMPTY_STRING;
 import static ff.three.three.bean.Constants.*;
@@ -136,14 +135,10 @@ public class HammerLineService implements IService {
         }
         boolean hammerDay = false;
         // 下影线长度是涨跌幅两倍以上
-        if (lowerShadowHeight >= cylinderHeightAbs * 2) {
-            if (lowerShadowHeight >= upperShadowHeight * 2) {
-                if (upperShadowHeight < cylinderHeightAbs ||
-                        cylinderHeightAbs < totalHeight / 10) {
-                    if ((open - low)
-                            / open >= 0.04) {
-                        hammerDay = true;
-                    }
+        if (lowerShadowHeight >= cylinderHeightAbs * 2 && lowerShadowHeight >= upperShadowHeight * 3) {
+            if (upperShadowHeight < cylinderHeightAbs || cylinderHeightAbs < totalHeight / 10) {
+                if ((open - low) / open >= 0.03) {
+                    hammerDay = true;
                 }
             }
         }
@@ -164,7 +159,7 @@ public class HammerLineService implements IService {
         int unknownCount = 0;
         Quotation tmp = null;
         for (Quotation quotation : list) {
-            if (Preconditions.isNotBlank(tmp)) {
+            if (Preconditions.isNotBlank(tmp) && Preconditions.isNotBlank(quotation)) {
                 if (Preconditions.isNotBlank(quotation.getMa5())
                         && Preconditions.isNotBlank(tmp.getMa5())) {
                     if (quotation.getMa5().doubleValue() - tmp.getMa5().doubleValue() >= 0) {
@@ -263,5 +258,73 @@ public class HammerLineService implements IService {
         average = average / highPercentD1Items.size();
         LOGGER.info("| Day1 high average: {}", NumberFormatUtils.percentFormat(average));
     }
+
+
+    public void findReg() {
+        Map<String, List<String>> sources = new HashMap<>();
+        sources.put("20180831", Arrays.asList("SZ000662", "SH603728", "SZ002259"));
+        sources.put("20180903", Arrays.asList("SH600355",
+                "SZ300577",
+                "SZ300338",
+                "SZ002536",
+                "SH600039",
+                "SH603337",
+                "SZ000736",
+                "SH600191",
+                "SH603733",
+                "SZ002848",
+                "SH603636",
+                "SH603996",
+                "SZ300706",
+                "SZ300705",
+                "SH600460",
+                "SZ300555",
+                "SZ000401",
+                "SZ002217"));
+        sources.put("20180917", Arrays.asList("SZ000018",
+                "SH603737",
+                "SH603050",
+                "SZ300509",
+                "SZ002562",
+                "SZ002919",
+                "SZ002511",
+                "SZ002521"));
+        sources.put("20180914", Arrays.asList("SZ000018",
+                "SH603737",
+                "SH603050",
+                "SZ300509",
+                "SZ002562",
+                "SZ002919",
+                "SZ002511",
+                "SZ002521"));
+        sources.put("20180911", Arrays.asList("SZ002384",
+                "SZ300328",
+                "SZ002864"));
+        for (Map.Entry<String, List<String>> me : sources.entrySet()) {
+            findReg(me.getKey(), me.getValue());
+        }
+    }
+
+
+    public void findReg(String date, List<String> symbols) {
+        LOGGER.info("========= {}", date);
+        for (String symbol : symbols) {
+            Quotation quotation = this.quotationService.queryBySymbolAndDate(symbol, date);
+            if (Preconditions.isNotBlank(quotation)) {
+                LOGGER.info("{} {}", symbol, isHammerDay(quotation));
+            } else {
+                LOGGER.info(symbol);
+            }
+        }
+
+        List<Quotation> list = this.quotationService.queryByDate("20180911");
+        for (Quotation quotation : list) {
+            if (isHammerDay(quotation)) {
+                LOGGER.info("{} {}", quotation.getSymbol());
+            }
+        }
+
+    }
+
 
 }

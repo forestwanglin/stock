@@ -45,3 +45,4 @@
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/crawler/RtHammerStockCrawlerService.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/domain/Stock.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/repository/QuotationRepository.java
+/workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/crawler/TxnDayCrawlerService.java

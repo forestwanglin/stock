@@ -1,7 +1,6 @@
 package ff.three.three.controller;
 
 import cn.magicwindow.common.exception.MwException;
-import com.alibaba.fastjson.JSONObject;
 import ff.three.three.service.analysis.FallingStockAnalysisService;
 import ff.three.three.service.analysis.HammerLineService;
 import ff.three.three.service.crawler.RtHammerStockCrawlerService;
@@ -125,7 +124,14 @@ public class TestController {
 
     @RequestMapping("/rthsc")
     public String rthsc() throws MwException {
-        JSONObject xx = rtHammerStockCrawlerService.crawlOneStock("SZ300661");
+        rtHammerStockCrawlerService.crawl();
         return "rthsc";
     }
+
+    @RequestMapping("/findReg")
+    public String findReg() throws MwException {
+        hammerLineService.findReg();
+        return "rthsc";
+    }
+
 }

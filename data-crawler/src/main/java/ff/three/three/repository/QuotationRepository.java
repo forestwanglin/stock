@@ -38,6 +38,8 @@ public interface QuotationRepository extends BaseEntityRepository<Quotation> {
     @Query(nativeQuery = true, value = "select DISTINCT date from quotation where symbol='" + SH_INDEX_SYMBOL + "' and deleted = 0 ")
     List<String> queryAllTxnDay();
 
+    List<Quotation> findAllByDateAndDeletedIsFalseOrderBySymbol(String date);
+
 
 //    /**
 //     * 包括当天

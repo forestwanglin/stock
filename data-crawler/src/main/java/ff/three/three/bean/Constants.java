@@ -10,7 +10,9 @@ package ff.three.three.bean;
  */
 public interface Constants {
 
-    String COOKIE = "xq_a_token=9c75d6bfbd0112c72b385fd95305e36563da53fb; xq_a_token.sig=-6-bcHntQlhRjsyrvsY2IGwh-B4; xq_r_token=9ad364aac7522791166c59720025e1f8f11bf9eb; xq_r_token.sig=usx1_hrblByw-9h0cXk1yLIUlL4; u=321537085819834; Hm_lvt_1db88642e346389874251b5a1eded6e3=1537085820; _ga=GA1.2.1936212577.1537085820; _gid=GA1.2.1872475394.1537085820; device_id=36d2ef5cafd4ba1153dc2b8b63314bd6; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1537085885";
+//    /String COOKIE = "_ga=GA1.2.1936212577.1537085820; device_id=36d2ef5cafd4ba1153dc2b8b63314bd6; s=el1vnrpseg; _gid=GA1.2.1013820095.1537622075; Hm_lvt_1db88642e346389874251b5a1eded6e3=1537085820,1537719037,1537719221,1537719224; xq_a_token=776387e115646e8a4dcf81553387afac7c5a0279; xq_a_token.sig=5SWm2kWrzAOTikx7CWCYDxJo-3o; xq_r_token=9aa288619afa6f30f122dbef0f3344cd50457099; xq_r_token.sig=OeiO8iiNsHe_ULfkOZX6eIdXtZI; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1537973359; u=611537973359555; _gat_gtag_UA_16079156_4=1";
+
+    String COOKIE = "_ga=GA1.2.1936212577.{NOW}; device_id=36d2ef5cafd4ba1153dc2b8b63314bd6; s=el1vnrpseg; _gid=GA1.2.1013820095.{PRE2DAYS}; Hm_lvt_1db88642e346389874251b5a1eded6e3={NOW}; xq_a_token=776387e115646e8a4dcf81553387afac7c5a0279; xq_a_token.sig=5SWm2kWrzAOTikx7CWCYDxJo-3o; xq_r_token=9aa288619afa6f30f122dbef0f3344cd50457099; xq_r_token.sig=OeiO8iiNsHe_ULfkOZX6eIdXtZI; Hm_lpvt_1db88642e346389874251b5a1eded6e3={NEXT2DAYS}; u=611537973359555; _gat_gtag_UA_16079156_4=1";
 
     String PREFIX_HU = "SH";
 

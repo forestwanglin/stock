@@ -1,5 +1,6 @@
 package ff.three.three.service.entity;
 
+import cn.magicwindow.common.util.Preconditions;
 import ff.three.three.domain.Quotation;
 import ff.three.three.repository.QuotationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,10 @@ public class QuotationService extends BaseEntityService<Quotation> {
         return ((QuotationRepository) baseEntityRepository).findBySymbolAndDateAndDeletedIsFalse(symbol.toUpperCase(), date);
     }
 
+    public List<Quotation> queryByDate(String date) {
+        return ((QuotationRepository) baseEntityRepository).findAllByDateAndDeletedIsFalseOrderBySymbol(date);
+    }
+
 
     public List<Quotation> queryBySymbol(String symbol) {
         return ((QuotationRepository) baseEntityRepository).findAllBySymbolAndDeletedIsFalseOrderByDate(symbol.toUpperCase());
@@ -50,7 +55,10 @@ public class QuotationService extends BaseEntityService<Quotation> {
         List<String> dates = this.txnDayService.queryLastNDays(date, days);
         List<Quotation> list = new ArrayList<>();
         for (String d : dates) {
-            list.add(((QuotationRepository) baseEntityRepository).findBySymbolAndDateAndDeletedIsFalse(symbol.toUpperCase(), d));
+            Quotation quotation = ((QuotationRepository) baseEntityRepository).findBySymbolAndDateAndDeletedIsFalse(symbol.toUpperCase(), d);
+            if (Preconditions.isNotBlank(quotation)) {
+                list.add(quotation);
+            }
         }
         return list;
     }
