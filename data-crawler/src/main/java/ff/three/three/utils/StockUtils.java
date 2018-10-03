@@ -20,4 +20,13 @@ public class StockUtils {
                 stock.getCodeCategory() == CodeCategory.CHUANG_YE_BAN ||
                 stock.getCodeCategory() == CodeCategory.ZHONG_XIAO_BAN;
     }
+
+    public static String formatTxDate(String date) {
+        String year = date.substring(0, 2);
+        if (Integer.parseInt(year) >= 90) {
+            return String.format("19%s", date);
+        } else {
+            return String.format("20%s", date);
+        }
+    }
 }

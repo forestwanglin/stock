@@ -1,5 +1,6 @@
 package ff.three.three.utils;
 
+import cn.magicwindow.common.bean.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +29,17 @@ public class NumberFormatUtils {
         String data = df.format(d);
         data = String.format("%s%s", d >= 0 ? " " : EMPTY_STRING, data);
         return String.format("%s%s", data.length() == 8 ? EMPTY_STRING : (data.length() == 7 ? " " : "  "), data);
+    }
+
+    public static String formatTxYear(int year) {
+        if (year >= 0 && year <= 99) {
+            if (year < 10) {
+                return String.format("0%d", year);
+            } else {
+                return String.format("%s", year);
+            }
+        }
+        return Constants.EMPTY_STRING;
     }
 
 //    public static void main(String... args) {

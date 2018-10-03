@@ -5,9 +5,11 @@ import cn.magicwindow.common.service.IService;
 import cn.magicwindow.common.util.DateUtils;
 import cn.magicwindow.common.util.Preconditions;
 import cn.magicwindow.common.util.ThreadUtils;
+import com.alibaba.fastjson.JSONObject;
 import ff.three.three.domain.HammerStockCandidate;
 import ff.three.three.domain.Quotation;
 import ff.three.three.domain.Stock;
+import ff.three.three.service.crawler.RtHammerStockCrawlerService;
 import ff.three.three.service.entity.HammerStockCandidateService;
 import ff.three.three.service.entity.QuotationService;
 import ff.three.three.service.entity.StockService;
@@ -327,4 +329,57 @@ public class HammerLineService implements IService {
     }
 
 
+    @Autowired
+    private RtHammerStockCrawlerService rtHammerStockCrawlerService;
+
+    public void findHD(String date) throws MwException {
+        List<Quotation> list = this.quotationService.queryByDate(date);
+        int i = 0;
+        for (Quotation quotation : list) {
+            if (isHammerDay(quotation)) {
+                LOGGER.info("{} {}", quotation.getSymbol());
+                i++;
+            }
+        }
+        LOGGER.info("size {}", i);
+
+
+        long sd = System.currentTimeMillis();
+        List<Stock> stocks = this.stockService.list();
+        for (Stock stock : stocks) {
+            if (StockUtils.need2Deal(stock)) {
+                JSONObject data = this.rtHammerStockCrawlerService.crawlOneStock(stock.getSymbol());
+                if (data.getInteger("error_code") == 0) {
+                    List<JSONObject> items = data.getJSONObject("data").getJSONArray("items").toJavaList(JSONObject.class);
+                    List<Double> prices = new ArrayList<>();
+                    double low = 0;
+                    double high = 0;
+                    for (JSONObject jsonObject : items) {
+                        double price = jsonObject.getDouble("current");
+                        prices.add(price);
+                        if (low == 0 && high == 0) {
+                            low = price;
+                            high = price;
+                        } else {
+                            if (low >= price) {
+                                low = price;
+                            }
+                            if (high <= price) {
+                                high = price;
+                            }
+                        }
+                    }
+                    double open = prices.get(0);
+                    double close = prices.get(prices.size() - 1);
+                    if (this.isHammerDay(open, close, low, high)) {
+                        LOGGER.info("BUY!!! {}", stock.getSymbol());
+                    }
+                }
+            }
+            long ed = System.currentTimeMillis();
+
+            LOGGER.info("time {}", ed - sd);
+        }
+
+    }
 }

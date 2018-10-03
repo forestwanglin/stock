@@ -62,17 +62,4 @@ public class QuotationService extends BaseEntityService<Quotation> {
         }
         return list;
     }
-
-    public List<String> queryAllExistSymbol() {
-        return ((QuotationRepository) baseEntityRepository).queryAllExistSymbol();
-    }
-
-    public List<String> queryAllTxnDay() {
-        return ((QuotationRepository) baseEntityRepository).queryAllTxnDay();
-    }
-
-    public List<String> queryLastNTxnDay(int days) {
-        return ((QuotationRepository) baseEntityRepository).queryLastNTxnDay(days);
-    }
-
 }

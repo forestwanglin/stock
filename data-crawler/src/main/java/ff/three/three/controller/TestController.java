@@ -134,4 +134,10 @@ public class TestController {
         return "rthsc";
     }
 
+    @RequestMapping("/findHD/{date}")
+    public String findHD(@PathVariable(name = "date") String date) throws MwException {
+        hammerLineService.findHD(date);
+        return "rthsc";
+    }
+
 }
