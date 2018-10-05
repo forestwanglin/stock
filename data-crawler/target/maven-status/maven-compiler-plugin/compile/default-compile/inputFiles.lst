@@ -35,6 +35,7 @@
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/analysis/FallingStockAnalysisService.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/config/DruidDbConfig.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/repository/FallingStockRepository.java
+/workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/analysis/TxAnalysisService.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/crawler/TxCrawlerService.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/entity/HammerStockCandidateService.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/repository/BaseEntityRepository.java
@@ -44,7 +45,9 @@
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/config/SwaggerConfig.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/service/entity/QuotationService.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/job/CrawlStockJob.java
+/workspace/codes/stock/data-crawler/src/main/java/ff/three/three/job/CrawlTxQuotationJob.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/utils/NumberFormatUtils.java
+/workspace/codes/stock/data-crawler/src/main/java/ff/three/three/job/AnalysisTxQuotationJob.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/bean/pageable/PageableResponse.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/config/JobConfig.java
 /workspace/codes/stock/data-crawler/src/main/java/ff/three/three/utils/ListUtils.java

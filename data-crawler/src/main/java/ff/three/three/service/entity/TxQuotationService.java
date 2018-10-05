@@ -26,4 +26,8 @@ public class TxQuotationService extends BaseEntityService<TxQuotation> {
         baseEntityRepository.saveAll(txQuotations);
     }
 
+
+    public List<TxQuotation> listBySymbol(String symbol) {
+        return ((TxQuotationRepository) baseEntityRepository).findAllBySymbolAndDeletedIsFalseOrderByDate(symbol.toUpperCase());
+    }
 }

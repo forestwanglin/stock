@@ -30,7 +30,9 @@ public class TxQuotation extends BaseEntity {
     @Column(name = "date", columnDefinition = "varchar(8)")
     private String date;
 
-    // 手
+    /**
+     * 单位 手
+     */
     private long volume;
 
     @Column(name = "`open`", columnDefinition = "decimal(19, 8)")
@@ -41,5 +43,11 @@ public class TxQuotation extends BaseEntity {
     private BigDecimal low;
     @Column(name = "`close`", columnDefinition = "decimal(19, 8)")
     private BigDecimal close;
+
+    /**
+     * 计算所得
+     */
+    @Column(columnDefinition = "decimal(19, 8)")
+    private BigDecimal ma250;
 
 }

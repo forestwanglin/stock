@@ -46,15 +46,71 @@ public class TxCrawlerService implements IService {
      * 第一个%s，年份，两位   98-1998， 13-2013
      * 第二个%s，股票代码，sz，sh开头 小写，后面+6位股票代码
      */
-    private static final String YEAR_DAILY_URL_PATTERN = "http://data.gtimg.cn/flashdata/hushen/daily/%S/%s.js?visitDstTime=1";
+    private static final String YEAR_DAILY_URL_PATTERN = "http://data.gtimg.cn/flashdata/hushen/daily/%s/%s.js";
     private static final String NOT_FOUND_404 = "404 Not Found";
 
-
+    private static final String LATEST_DAILY_URL_PATTERN = "http://data.gtimg.cn/flashdata/hushen/latest/daily/%s.js";
     @Autowired
     private TxQuotationService txQuotationService;
 
     @Autowired
     private StockService stockService;
+
+
+    public void crawlLatestQuotation() throws MwException {
+        List<Stock> stocks = this.stockService.list();
+        List<Stock> crawlStocks = new ArrayList<>();
+        for (Stock stock : stocks) {
+            if (StockUtils.need2Deal(stock)) {
+                crawlStocks.add(stock);
+            }
+        }
+        List<List<Stock>> groups = ListUtils.split2Group(crawlStocks, THREAD_COUNT);
+
+        for (List<Stock> item : groups) {
+            ThreadUtils.executePoolThread(() -> {
+                for (Stock stock : item) {
+                    LOGGER.info("crawl latest quotation from tx: {}", stock.getSymbol());
+                    this.crawlLatestQuotation(stock.getSymbol());
+                }
+                LOGGER.info("thread finished");
+            });
+            ThreadUtils.sleep(1000L);
+        }
+    }
+
+
+    public void crawlLatestQuotation(String symbol) {
+        this.crawlLatestQuotation(symbol, 1);
+    }
+
+    public void crawlLatestQuotation(String symbol, int tryCount) {
+        if (tryCount > MAX_TRY_COUNT) {
+            LOGGER.error("more than max count: {}", MAX_TRY_COUNT);
+        }
+        try {
+            String data = AsyncHttpUtils.syncGet(String.format(LATEST_DAILY_URL_PATTERN, symbol.toLowerCase()), null);
+            if (data.contains(NOT_FOUND_404)) {
+                LOGGER.info("not found latest data for symbol: {}", symbol);
+                return;
+            }
+            String[] strs = data.split(Constants.EQUAL);
+            if (strs.length == 2) {
+                String value = strs[1].substring(1);
+                String[] lines = value.split("\\\\n\\\\\n");
+                for (String line : lines) {
+                    this.updateQuotation(symbol, line);
+                }
+            } else {
+                LOGGER.info("length of strs is not 2.");
+            }
+        } catch (HttpServiceException e) {
+            LOGGER.error("error", e);
+            ThreadUtils.sleep(1000L);
+            crawlLatestQuotation(symbol, ++tryCount);
+        }
+    }
+
 
     public void crawlDaily() throws MwException {
         crawlDaily(false);
@@ -126,22 +182,7 @@ public class TxCrawlerService implements IService {
                                 txQuotation.setLow(new BigDecimal(values[4]));
                                 list.add(txQuotation);
                             } else {
-                                TxQuotation txQuotation = txQuotationService.queryBySymbolAndDate(symbol.toUpperCase(), date);
-                                if (Preconditions.isBlank(txQuotation)) {
-                                    txQuotation = new TxQuotation();
-                                    txQuotation.setDate(date);
-                                    txQuotation.setSymbol(symbol.toUpperCase());
-                                    txQuotation.setVolume(Long.parseLong(values[5]));
-                                    txQuotation.setOpen(new BigDecimal(values[1]));
-                                    txQuotation.setClose(new BigDecimal(values[2]));
-                                    txQuotation.setHigh(new BigDecimal(values[3]));
-                                    txQuotation.setLow(new BigDecimal(values[4]));
-                                    try {
-                                        this.txQuotationService.save(txQuotation);
-                                    } catch (MwException e) {
-                                        LOGGER.warn("save error with stock {} line {}", symbol, line);
-                                    }
-                                }
+                                this.updateQuotation(symbol, line);
                             }
                         } else {
                             LOGGER.error("length of values is not 6, {}", line);
@@ -158,6 +199,35 @@ public class TxCrawlerService implements IService {
             LOGGER.error("error", e);
             ThreadUtils.sleep(1000L);
             crawlDaily(symbol, year, init, ++tryCount);
+        }
+    }
+
+
+    private void updateQuotation(String symbol, String line) {
+        if (Preconditions.isNotBlank(line.trim())) {
+            String[] values = line.trim().split(" ");
+            if (values.length == 6) {
+                String date = StockUtils.formatTxDate(values[0]);
+                TxQuotation txQuotation = this.txQuotationService.queryBySymbolAndDate(symbol.toUpperCase(), date);
+                if (Preconditions.isBlank(txQuotation)) {
+                    txQuotation = new TxQuotation();
+                    txQuotation.setDate(date);
+                    txQuotation.setSymbol(symbol.toUpperCase());
+                    txQuotation.setVolume(Long.parseLong(values[5]));
+                    txQuotation.setOpen(new BigDecimal(values[1]));
+                    txQuotation.setClose(new BigDecimal(values[2]));
+                    txQuotation.setHigh(new BigDecimal(values[3]));
+                    txQuotation.setLow(new BigDecimal(values[4]));
+                    try {
+                        this.txQuotationService.save(txQuotation);
+                    } catch (MwException e) {
+                        LOGGER.warn("save error with stock {} line {}", symbol, line);
+                    }
+
+                }
+            } else {
+                LOGGER.error("length of values is not 6, {}", line);
+            }
         }
     }
 
